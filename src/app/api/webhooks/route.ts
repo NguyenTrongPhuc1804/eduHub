@@ -1,14 +1,15 @@
 import CreateUser from "@/lib/action/user.action";
 import { WebhookEvent } from "@clerk/nextjs/server";
+import { headers } from "next/headers";
 import { NextResponse } from "next/server";
 import { Webhook } from "svix";
 
 const webhookSecret: string = process.env.WEBHOOK_SECRET || "";
 
 export async function POST(req: Request) {
-  const svix_id = req.headers.get("svix-id") ?? "";
-  const svix_timestamp = req.headers.get("svix-timestamp") ?? "";
-  const svix_signature = req.headers.get("svix-signature") ?? "";
+  const svix_id = headers().get("svix-id") ?? "";
+  const svix_timestamp = headers().get("svix-timestamp") ?? "";
+  const svix_signature = headers().get("svix-signature") ?? "";
 
   if (!process.env.WEBHOOK_SECRET) {
     throw new Error("WEBHOOK_SECRET is not set");
