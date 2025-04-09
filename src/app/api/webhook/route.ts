@@ -41,7 +41,7 @@ export async function POST(req: Request) {
   const eventType = msg.type;
 
   if (eventType === "user.created") {
-    const { username, id, email_addresses, image_url } = msg.data;
+    const { username, id, image_url } = msg.data;
 
     const user = await CreateUser({
       clerkId: id,
