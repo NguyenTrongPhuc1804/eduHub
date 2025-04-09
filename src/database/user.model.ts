@@ -1,5 +1,5 @@
 import { EUserRole, EUserStatus } from "@/interfaces/user/enum";
-import { Document, model, Schema } from "mongoose";
+import mongoose, { Document, Schema } from "mongoose";
 
 export interface IUser extends Document {
   clerkId: string;
@@ -24,7 +24,6 @@ const UserSchema = new Schema<IUser>({
   },
   username: {
     type: String,
-    required: true,
   },
   email: {
     type: String,
@@ -55,4 +54,4 @@ const UserSchema = new Schema<IUser>({
   },
 });
 
-export const User = model<IUser>("User", UserSchema);
+export const User = mongoose.models.User || mongoose.model("User", UserSchema);
