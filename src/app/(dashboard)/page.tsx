@@ -1,0 +1,29 @@
+import CourseGrid from "@/components/common/course-grid";
+import CourseItem from "@/components/common/course-item";
+import Heading from "@/components/typography/heading";
+import { SignInButton, SignUpButton } from "@clerk/nextjs";
+import React from "react";
+
+const Page = () => {
+  // const user = CreateUser({
+  //   clerkId: "clerkId",
+  //   username: "username",
+  //   email: "email",
+  // });
+  return (
+    <div>
+      <Heading>Kham pha</Heading>
+      <div className="text-black">
+        <SignInButton />
+        <SignUpButton />
+      </div>
+      <CourseGrid>
+        <CourseItem />
+        <CourseItem />
+        <CourseItem />
+      </CourseGrid>
+    </div>
+  );
+};
+
+export default Page;
