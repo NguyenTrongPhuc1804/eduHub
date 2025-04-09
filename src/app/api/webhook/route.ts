@@ -7,9 +7,10 @@ import { Webhook } from "svix";
 const webhookSecret: string = process.env.WEBHOOK_SECRET || "";
 
 export async function POST(req: Request) {
-  const svix_id = (await headers()).get("svix-id") ?? "";
-  const svix_timestamp = (await headers()).get("svix-timestamp") ?? "";
-  const svix_signature = (await headers()).get("svix-signature") ?? "";
+  const headersList = await headers();
+  const svix_id = headersList.get("svix-id") ?? "";
+  const svix_timestamp = headersList.get("svix-timestamp") ?? "";
+  const svix_signature = headersList.get("svix-signature") ?? "";
 
   if (!process.env.WEBHOOK_SECRET) {
     throw new Error("WEBHOOK_SECRET is not set");
