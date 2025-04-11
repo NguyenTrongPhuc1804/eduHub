@@ -1,5 +1,5 @@
 export interface ICreateUserParams {
-  clerkId: string;
+  clerk_id: string;
   username: string;
   email: string;
   name?: string;

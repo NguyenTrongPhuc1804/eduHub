@@ -1,4 +1,4 @@
-import CreateUser from "@/lib/action/user.action";
+import { CreateUser } from "@/lib/action/user.action";
 import { WebhookEvent } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
 import { Webhook } from "svix";
@@ -43,7 +43,7 @@ export async function POST(req: Request) {
     const { username, id, email_addresses, image_url } = msg.data;
 
     const user = await CreateUser({
-      clerkId: id,
+      clerk_id: id,
       username: username!,
       name: username!,
       email: email_addresses?.[0]?.email_address || "test@gmail.com",
