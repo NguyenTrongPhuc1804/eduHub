@@ -7,3 +7,4 @@ export { default as IconExplore } from "./icon-explore";
 export { default as IconEye } from "./icon-eye";
 export { default as IconStar } from "./icon-star";
 export { default as IconClock } from "./icon-clock";
+export { default as IconAdd } from "./icon-add";

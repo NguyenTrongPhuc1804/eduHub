@@ -8,6 +8,16 @@ const nextConfig: NextConfig = {
         hostname: "images.unsplash.com",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "2236pei893.ufs.sh",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "i.pinimg.com",
+        pathname: "/**",
+      },
     ],
   },
 };

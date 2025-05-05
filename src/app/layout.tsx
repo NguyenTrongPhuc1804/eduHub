@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { manrope } from "@/util";
 import { ClerkProvider } from "@clerk/nextjs";
 import { ThemeProvider } from "@/components/layout/theme-provider";
+import { Toaster } from "@/components/ui/sonner";
+import { manrope } from "@/utils";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,8 +17,8 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider>
-      <html lang="vi" suppressHydrationWarning suppressContentEditableWarning>
-        <body className={`${manrope.variable} antialiased `}>
+      <html lang="vi" suppressHydrationWarning>
+        <body className={`${manrope.variable} antialiased`}>
           <ThemeProvider
             attribute="class"
             defaultTheme="system"
@@ -26,6 +27,7 @@ export default function RootLayout({
           >
             {children}
           </ThemeProvider>
+          <Toaster richColors />
         </body>
       </html>
     </ClerkProvider>

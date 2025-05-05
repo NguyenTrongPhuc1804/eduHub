@@ -1,6 +1,7 @@
 import { CourseGrid, CourseItem } from "@/components/common";
 import { SignOutButton } from "@/components/common/sign-out";
 import Heading from "@/components/typography/heading";
+import { ICourse } from "@/database/course.model";
 import React from "react";
 
 const page = () => {
@@ -23,9 +24,9 @@ const page = () => {
       <SignOutButton />
 
       <CourseGrid>
-        <CourseItem />
-        <CourseItem />
-        <CourseItem />
+        <CourseItem data={{} as ICourse} />
+        <CourseItem data={{} as ICourse} />
+        <CourseItem data={{} as ICourse} />
       </CourseGrid>
     </>
   );
