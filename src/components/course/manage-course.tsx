@@ -88,7 +88,7 @@ const ManageCourse = ({ data }: { data: ICourse[] }) => {
   return (
     <div>
       <Heading className="mb-5 lg:mb-0">Quản lý khoá học</Heading>
-      <Input className="mb-5" placeholder="Tìm kiếm khoá học..." />
+      <Input className="my-5" placeholder="Tìm kiếm khoá học..." />
       <Table>
         <TableHeader>
           <TableRow>
@@ -102,7 +102,7 @@ const ManageCourse = ({ data }: { data: ICourse[] }) => {
           {data.map((item) => (
             <TableRow key={item._id}>
               <TableCell className="font-medium">
-                <div className="flex lg:flex-row flex-col items-center gap-3 w-full">
+                <div className="lg:flex flex-row  items-center   gap-3 w-full">
                   <Image
                     src={item.image || defaultImage!}
                     alt="Course"
@@ -110,7 +110,7 @@ const ManageCourse = ({ data }: { data: ICourse[] }) => {
                     height={80}
                     className="flex-shrink-0 size-20 rounded-lg object-cover"
                   />
-                  <div className="flex flex-col gap-1 text-center">
+                  <div className="flex flex-col gap-1 text-start">
                     <div className="text-base font-medium">{item.title}</div>
                     <p className="text-xs text-gray-500">
                       {new Date(item.created_at).toLocaleDateString("vi-VN")}

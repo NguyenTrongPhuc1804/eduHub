@@ -13,7 +13,7 @@ import {
 import { courseLevelOptions, courseStatus } from "@/constants";
 import { ECourseStatus } from "@/interfaces/course/enum";
 import PageNotFound from "@/app/not-found";
-type Params = Promise<{ slug: string }>;
+import { Params } from "@/interfaces/common/common.interface";
 
 const CourseDetail = async (props: { params: Params }) => {
   const params = await props.params;
@@ -28,22 +28,20 @@ const CourseDetail = async (props: { params: Params }) => {
       <div className="">
         <div className="relative aspect-video mb-5">
           {data.intro_url ? (
-            <>
-              <iframe
-                width="935"
-                height="526"
-                src={`https://www.youtube.com/embed/${videoId}`}
-                title="Bruno Mars -  Talking To The Moon (Lyrics) 🎵"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerPolicy="strict-origin-when-cross-origin"
-                allowFullScreen
-                className="w-full h-full object-fill"
-              ></iframe>
-            </>
+            <iframe
+              width="935"
+              height="526"
+              src={`https://www.youtube.com/embed/${videoId}`}
+              title="Bruno Mars -  Talking To The Moon (Lyrics) 🎵"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+              className="w-full h-full object-fill"
+            ></iframe>
           ) : (
             <Image
               src={data.image}
-              alt=""
+              alt="primary_image"
               fill
               className="w-full h-full object-cover rounded-lg"
             />
