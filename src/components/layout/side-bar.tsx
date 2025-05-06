@@ -7,7 +7,7 @@ import Link from "next/link";
 
 const SideBar = () => {
   return (
-    <div className="flex flex-col lg:w-[300px] w-full p-5 border-r  bgDarkMod borderDarkMod dark:text-white lg:fixed top-0 left-0 bottom-0">
+    <div className="hidden lg:flex lg:flex-col lg:w-[300px] w-full p-5 border-r bgDarkMod borderDarkMod dark:text-white lg:fixed top-0 left-0 bottom-0">
       <Link
         href="/"
         className="logo font-bold text-3xl mb-5 inline-flex items-center"

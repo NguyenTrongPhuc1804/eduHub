@@ -6,6 +6,7 @@ import { ICourse } from "@/database/course.model";
 
 const CourseItem = ({ data }: { data: ICourse }) => {
   const { slug, title, image, views, rating, price } = data;
+
   return (
     <div className="bg-white relative dark:bg-dark-2 dark:border-gray-200/10 border border-gray-300 p-4 rounded-2xl text-black flex flex-col h-full">
       <Link href={"/"} className="h-[180px] block relative">
@@ -14,7 +15,7 @@ const CourseItem = ({ data }: { data: ICourse }) => {
         </span>
         <Image
           alt="course"
-          src={image}
+          src={image || "/Defult_avatar.png"}
           width={600}
           height={400}
           className="w-full h-full object-cover rounded-lg"
@@ -45,8 +46,8 @@ const CourseItem = ({ data }: { data: ICourse }) => {
           <span>3h25</span>
         </div>
 
-        <div className="ml-auto text-base text-second font-bold">
-          <span>{price ?? 0}</span>
+        <div className="ml-auto text-base text-second font-bold line-clamp-1">
+          <span>{price.toLocaleString() ?? 0} đ</span>
         </div>
       </div>
       <Link

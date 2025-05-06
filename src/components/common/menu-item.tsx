@@ -8,24 +8,29 @@ interface MenuItemProps {
   href: string;
   label: string;
   icon?: React.ReactNode;
+  onlyIcon?: boolean;
 }
 
-const MenuItem: React.FC<MenuItemProps> = ({ href, label, icon }) => {
+const MenuItem: React.FC<MenuItemProps> = ({ href, label, icon, onlyIcon }) => {
   const pathName = usePathname();
   const isActive = pathName === href;
 
   return (
     <li className="w-full">
       <div
-        className={`flex items-center justify-start rounded-md pl-2 p-3 w-full ${
+        className={`  rounded-md pl-2 p-3 w-full ${
           isActive
             ? "text-white bg-second svg-animation"
             : "hover:text-second hover:bg-second/10 text-black dark:text-white transition-all"
         }`}
       >
-        {icon && <span className="mr-2">{icon}</span>}
-        <Link href={href} className="w-full">
-          {label}
+        <Link
+          href={href}
+          className="w-full flex items-center justify-center lg:justify-start"
+        >
+          {icon && <span className="lg:mr-2 ">{icon}</span>}
+
+          {onlyIcon ?? label}
         </Link>
       </div>
     </li>

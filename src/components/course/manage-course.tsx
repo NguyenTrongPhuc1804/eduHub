@@ -14,7 +14,7 @@ import Image from "next/image";
 import { Badge } from "../ui/badge";
 import { courseStatusOptions } from "@/constants";
 import { Button } from "../ui/button";
-import { BookOpen, Edit, Eye, Trash } from "lucide-react";
+import { BookOpen, Edit, Eye, Plus, Trash } from "lucide-react";
 import Link from "next/link";
 import { ICourse } from "@/database/course.model";
 import { updateCourse } from "@/lib/action/course.action";
@@ -41,8 +41,10 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination";
+import { useRouter } from "next/navigation";
 
 const ManageCourse = ({ data }: { data: ICourse[] }) => {
+  const route = useRouter();
   const defaultImage = process.env.NEXT_PUBLIC_DEFAULT_IMAGE_URL;
 
   const handleDeleteCourse = async (slug: string) => {
@@ -134,7 +136,6 @@ const ManageCourse = ({ data }: { data: ICourse[] }) => {
                   {courseStatusOptions[item.status].title}
                 </Badge>
               </TableCell>
-
               <TableCell>
                 <div className="grid grid-cols-4 gap-2 w-[200px]">
                   <Link
@@ -221,7 +222,13 @@ const ManageCourse = ({ data }: { data: ICourse[] }) => {
           </TableRow>
         </TableFooter>
       </Table>
-
+      <Button
+        onClick={() => route.push("/manage/course/new")}
+        variant={"default"}
+        className="text-white size-10 animate-bounce bg-second rounded-full fixed bottom-5 right-5"
+      >
+        <Plus />
+      </Button>
       <div className="">
         <Pagination>
           <PaginationContent>
