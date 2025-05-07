@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 import { z } from "zod";
-import "@uploadthing/react/styles.css";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -272,6 +271,7 @@ const CourseUpdate = ({ data }: { data: ICourse }) => {
                       config={{
                         cn: twMerge,
                       }}
+                      className="text-dark bg-second/90 rounded-2xl"
                       endpoint="imageUploader"
                       onClientUploadComplete={(res) => {
                         // Do something with the response

@@ -5,17 +5,18 @@ import { SearchParams } from "@/interfaces/common/common.interface";
 import { getCourseBySlug } from "@/lib/action/course.action";
 import React from "react";
 
-const Page = async (props: { searchParams: SearchParams }) => {
+const page = async (props: { searchParams: SearchParams }) => {
   const params = await props.searchParams;
 
   const findCourse = await getCourseBySlug({ slug: params.slug as string });
 
+  if (!findCourse) return <PageNotFound />;
   return (
     <div>
-      <Heading className="">Cập nhật khoá học</Heading>
-      {findCourse ? <CourseUpdate data={findCourse} /> : <PageNotFound />}
+      <Heading>Cập nhật khoá học</Heading>
+      <CourseUpdate data={findCourse} />
     </div>
   );
 };
 
-export default Page;
+export default page;

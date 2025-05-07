@@ -139,7 +139,7 @@ const ManageCourse = ({ data }: { data: ICourse[] }) => {
               <TableCell>
                 <div className="grid grid-cols-4 gap-2 w-[200px]">
                   <Link
-                    href={`/courses/update-content?slug=${item.slug}`}
+                    href={`/course/update-content?slug=${item.slug}`}
                     target="_blank"
                   >
                     <Button

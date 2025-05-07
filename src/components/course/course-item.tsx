@@ -47,7 +47,7 @@ const CourseItem = ({ data }: { data: ICourse }) => {
         </div>
 
         <div className="ml-auto text-base text-second font-bold line-clamp-1">
-          <span>{price.toLocaleString() ?? 0} đ</span>
+          <span>{price?.toLocaleString() ?? 0} đ</span>
         </div>
       </div>
       <Link
