@@ -1,5 +1,9 @@
 import { ICourse } from "@/database/course.model";
+import { ILecture } from "@/database/lecture.model";
 
+export interface IGetCourseResponse extends Omit<ICourse, "lectures"> {
+  lectures: ILecture[];
+}
 export interface ICreateCourseParams {
   title: string;
   slug: string;

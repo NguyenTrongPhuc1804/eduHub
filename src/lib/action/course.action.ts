@@ -2,6 +2,7 @@
 
 import {
   ICreateCourseParams,
+  IGetCourseResponse,
   IResponseCreateCourse,
   IUpdateCourse,
   IUpdateResponse,
@@ -9,6 +10,7 @@ import {
 import { connectToDB } from "../mongoose";
 import { Course, ICourse } from "@/database/course.model";
 import { revalidatePath } from "next/cache";
+import { Lecture } from "@/database/lecture.model";
 
 export const createCourse = async (
   params: ICreateCourseParams
@@ -30,12 +32,17 @@ export const createCourse = async (
 export const getCourseBySlug = async ({
   slug,
 }: {
-  slug: string;
-}): Promise<ICourse | undefined> => {
+  slug: string | string[] | undefined;
+}): Promise<IGetCourseResponse | undefined> => {
   connectToDB();
 
   try {
-    const course = await Course.findOne({ slug });
+    const course = await Course.findOne({ slug }).populate({
+      path: "lectures",
+      model: Lecture,
+      select: "_id title",
+      match: { destroy: false },
+    });
     return JSON.parse(JSON.stringify(course));
   } catch (error) {
     console.log(error);

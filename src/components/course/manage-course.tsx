@@ -42,6 +42,7 @@ import {
   PaginationPrevious,
 } from "@/components/ui/pagination";
 import { useRouter } from "next/navigation";
+import AlertDialogDelete from "../common/alert-dialog";
 
 const ManageCourse = ({ data }: { data: ICourse[] }) => {
   const route = useRouter();
@@ -139,7 +140,7 @@ const ManageCourse = ({ data }: { data: ICourse[] }) => {
               <TableCell>
                 <div className="grid grid-cols-4 gap-2 w-[200px]">
                   <Link
-                    href={`/course/update-content?slug=${item.slug}`}
+                    href={`/manage/course/update-content?slug=${item.slug}`}
                     target="_blank"
                   >
                     <Button
@@ -168,48 +169,20 @@ const ManageCourse = ({ data }: { data: ICourse[] }) => {
                       <Edit />
                     </Button>
                   </Link>
-                  <AlertDialog>
-                    <AlertDialogTrigger asChild>
-                      <Button
-                        className="cursor-pointer"
-                        variant="outline"
-                        size="icon"
-                      >
-                        <Trash />
-                      </Button>
-                    </AlertDialogTrigger>
 
-                    <AlertDialogContent>
-                      <AlertDialogHeader>
-                        <AlertDialogTitle>
-                          Bạn có chắc chắn muốn xóa khoá học này?
-                        </AlertDialogTitle>
-                        <AlertDialogDescription>
-                          Điều này sẽ xóa khoá học khỏi hệ thống và không thể
-                          khôi phục lại.
-                        </AlertDialogDescription>
-                      </AlertDialogHeader>
-                      <AlertDialogFooter>
-                        <AlertDialogCancel className="cursor-pointer">
-                          Huỷ
-                        </AlertDialogCancel>
-                        <AlertDialogAction
-                          className="bg-second text-white cursor-pointer"
-                          onClick={() => handleDeleteCourse(item.slug)}
-                        >
-                          Tiếp tục
-                        </AlertDialogAction>
-                      </AlertDialogFooter>
-                    </AlertDialogContent>
-                  </AlertDialog>
-
-                  {/* <Button
-                    onClick={() => handleDeleteCourse(item.slug)}
-                    variant="outline"
-                    size="icon"
+                  <AlertDialogDelete
+                    func={() => handleDeleteCourse(item.slug)}
+                    title="Xoá khoá học"
+                    description="Bạn có chắc chắn muốn xoá khoá học này không?"
                   >
-                    <Trash />
-                  </Button> */}
+                    <Button
+                      className="cursor-pointer"
+                      variant="outline"
+                      size="icon"
+                    >
+                      <Trash />
+                    </Button>
+                  </AlertDialogDelete>
                 </div>
               </TableCell>
             </TableRow>

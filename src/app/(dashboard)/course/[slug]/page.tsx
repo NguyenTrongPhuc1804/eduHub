@@ -21,6 +21,7 @@ const CourseDetail = async (props: { params: Params }) => {
   const data = await getCourseBySlug({ slug: params.slug });
 
   if (!data || data.status !== ECourseStatus.APPROVED) return <PageNotFound />;
+  const lectures = data.lectures || [];
 
   const videoId = data.intro_url?.split("v=")[1];
   return (
@@ -111,6 +112,24 @@ const CourseDetail = async (props: { params: Params }) => {
                   </AccordionItem>
                 </Accordion>
               </div>
+            ))}
+          </div>
+        </BoxSection>
+
+        <BoxSection title="Nội dung khoá học">
+          <div className="leading-normal mb-10">
+            {lectures.map((item, idx) => (
+              <Accordion
+                type="single"
+                collapsible
+                className="w-full"
+                key={item._id}
+              >
+                <AccordionItem value="item-1">
+                  <AccordionTrigger>{item.title}</AccordionTrigger>
+                  <AccordionContent>hello guy bro mem</AccordionContent>
+                </AccordionItem>
+              </Accordion>
             ))}
           </div>
         </BoxSection>

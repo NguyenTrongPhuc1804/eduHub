@@ -18,7 +18,10 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="vi" suppressHydrationWarning>
-        <body className={`${manrope.variable} antialiased`}>
+        <body
+          className={`${manrope.variable} antialiased`}
+          suppressHydrationWarning={true}
+        >
           <ThemeProvider
             attribute="class"
             defaultTheme="system"
